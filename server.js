@@ -17,11 +17,6 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static("app/public"));
 
 
-// ====== Map for server use routes created ===== //
-require("./app/routing/apiRoutes")(app);
-require("./app/routing/htmlRoutes")(app);
-
-
 // ====== Listener to start server ===== //
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);
