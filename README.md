@@ -2,19 +2,19 @@
 
 ## **Synopsis**
  
-A full-stack 'dating' application. Pairs users based on their responses to 10 questions. 
+A fill-stack application using handlebars.  
  
 ***
 
 ### **Motivation**
 
-This application was a first attempt at full-stack web development.
+First application utilizing handlebars.
 
 ***
 
 ### **Installation**
 
-Create clone and install the path and body-parser packages via node. Run the server file in node to start the server "node server.js". Open up port 3000 on your chosen browser.
+
 
 ***
 
@@ -23,5 +23,6 @@ Create clone and install the path and body-parser packages via node. Run the ser
 ##### [Node.JS](https://nodejs.org/en/download/)
 ##### [NPM Packages](https://www.npmjs.com)
 * [express](https://www.npmjs.com/package/express)
-* [path](https://www.npmjs.com/package/path)
-* [body-parser](https://www.npmjs.com/package/body-parser)
+* [express-handlebars] https://www.npmjs.com/package/express-handlebars
+* [body-parser] https://www.npmjs.com/package/body-parser
+* [method-override] https://www.npmjs.com/package/method-override
