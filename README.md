@@ -22,7 +22,8 @@ First application utilizing handlebars.
 
 ##### [Node.JS](https://nodejs.org/en/download/)
 ##### [NPM Packages](https://www.npmjs.com)
+* [mysql](https://www.npmjs.com/package/mysql)
 * [express](https://www.npmjs.com/package/express)
-* [express-handlebars] https://www.npmjs.com/package/express-handlebars
-* [body-parser] https://www.npmjs.com/package/body-parser
-* [method-override] https://www.npmjs.com/package/method-override
+* [express-handlebars](https://www.npmjs.com/package/express-handlebars)
+* [body-parser](https://www.npmjs.com/package/body-parser)
+* [method-override](https://www.npmjs.com/package/method-override)
