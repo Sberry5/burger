@@ -1,11 +1,11 @@
 // Required connection
-var connection = require("../connection.js");
+var connection = require("./connection.js");
 
 
 // Object Relational Mappers (ORM) for sql commands
 
 var orm = {
-  selectALL: function(callback) {
+  selectALL: function(cb) {
     var queryString = "SELECT * FROM" + table;
     connection.query(queryString, function(err, result) {
       if (err) throw err;

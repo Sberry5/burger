@@ -1,20 +1,31 @@
 // ====== Required Packages ===== //
 var express = require("express");
-var path = require("method-override");
 var bodyParser = require("body-parser");
 
 
 // ====== Indicate Server and Initialize Port ===== //
-var app = express();
 var PORT = process.env.PORT || 3000;
+var app = express();
+
+
+// ====== Indicate Server and Initialize Port ===== //
+app.use(express.static("public"));
 
 
 // ====== Allow Server to Interpret Data via body-parser ===== //
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
-app.use(express.static("app/public"));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+// ====== Setup handlebars ===== //
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+
+// ====== Import routes ===== //
+var routes = require("./controllers/burgers_controller.js");
+app.use("/", routes);
 
 
 // ====== Listener to start server ===== //
