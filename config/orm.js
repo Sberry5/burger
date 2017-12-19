@@ -15,7 +15,7 @@ var orm = {
     });
   },
 
-  insertOne: function(table, column, userInput, callback) {
+  insertOne: function(table, column, userInput, cb) {
    var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -36,11 +36,13 @@ var orm = {
     });
   },
 
-  updateOne: function(selectedItem, tableTwoForeignKey, tableOne, tableTwo) {
-    var queryString = "SELECT ??, COUNT(??) AS count FROM ?? LEFT JOIN ?? ON ??.??= ??.id GROUP BY ?? ORDER BY count DESC LIMIT 1";
+  updateOne: function(table, objColVals, condition, cb) {
+    var queryString = 'UPDATE ' + table + ' SET ' + objToSql(objColVals) + ' WHERE ' + condition;
 
-    connection.query(queryString, [tableOneCol, tableOneCol, tableOne, tableTwo, tableTwo, tableTwoForeignKey, tableOne, tableOneCol], function(err, result) {
-      console.log(result);
+    console.log(queryString);
+
+    connection.query(queryString, function(err, result){
+      cb(result);
     });
   }
 };
