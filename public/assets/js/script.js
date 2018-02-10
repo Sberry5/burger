@@ -15,14 +15,13 @@ $(function() {
     }).then(
       function() {
         console.log("changed devoured to", newDevoured);
-
         location.reload();
       }
     );
   });
 
+
   $(".create-form").on("submit", function(event) {
-    // PreventDefault on a submit event
     event.preventDefault();
 
     var newBurger = {
