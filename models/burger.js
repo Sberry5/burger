@@ -3,12 +3,12 @@ var orm = require("../config/orm.js");
 
 var burger = {
   all: function(cb) {
-    orm.selectAll("burgers", function(result) {
+    orm.all("burgers", function(result) {
       cb(result);
     });
   },
-  create: function(table, columns, values, cb) {
-    orm.insertOne("burgers", columns, values, function(result) {
+  create: function(columns, values, cb) {
+    orm.create("burgers", columns, values, function(result) {
       cb(result);
     });
   },
