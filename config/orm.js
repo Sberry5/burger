@@ -3,7 +3,6 @@ var connection = require("../config/connection.js");
 
 
 // Object Relational Mappers (ORM) for sql commands
-
 var orm = {
   selectAll: function(tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
@@ -37,7 +36,12 @@ var orm = {
   },
 
   updateOne: function(table, objColVals, condition, cb) {
-    var queryString = 'UPDATE ' + table + ' SET ' + objToSql(objColVals) + ' WHERE ' + condition;
+    var queryString = 'UPDATE ' + table;
+    
+    queryString += " SET ";
+    queryString += objToSql(objColVals);
+    queryString += " WHERE ";
+    queryString += condition;
 
     console.log(queryString);
 

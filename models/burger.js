@@ -8,7 +8,7 @@ var burger = {
     });
   },
   create: function(table, columns, values, cb) {
-    orm.create("burgers", columns, values, function(result) {
+    orm.insertOne("burgers", columns, values, function(result) {
       cb(result);
     });
   },
@@ -17,11 +17,6 @@ var burger = {
       cb(result);
     });
   },
-  delete: function(condition, cb) {
-    orm.delete("burgers", condition, function(result) {
-      cb(result);
-    });
-  }
 };
 
 // Export the database functions for the controller, burger.ks.
