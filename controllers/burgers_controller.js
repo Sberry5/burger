@@ -23,7 +23,8 @@ router.post('/create', function(req,res) {
 
 // Route to update status of DB object 
 router.put('/:id', function(req,res) {
-	burger.updateOne(req.body.id, function() {
+	burger.update(req.body.id, function() {
+    devoured: 1,
 		res.redirect("/");
 	});
 });
