@@ -7,17 +7,16 @@
     <div class="col-md-6 col-md-offset-1">
       <h2 class="uneaten-title">Available Burgers</h2>
       <ul class="uneaten">
-
         {{#each burgers}}
           {{#unless this.devoured}}
             <li>
               <p>
                 {{this.burger_name}}
-              </p>
-              <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
-                <input type="hidden" name="devoured" value="true">
-                <button type="submit" class="btn btn-default change-devoured" style="background-color:#ff9429; color:#b21000; padding: 15px">Eat Burger</button>
-              </form>
+                <form class="change-devoured" action="/{{this.id}}" method="POST">
+                  <input type="hidden" name="id" value={{this.id}}>
+                  <button type="submit" class="btn btn-default change-devoured" style="background-color:#ff9429; color:#b21000; padding: 15px">Eat Burger</button>
+                </form>
+              </p>              
             </li>
           {{/unless}}
         {{/each}}
@@ -25,16 +24,12 @@
     </div>
         <div class="col-md-6 col-md-offset-1">
           <h2 class="eaten-title">Eaten Burgers</h2>
-          <ul class="burgers-eaten">
+          <ul class="eaten">
             {{#each burgers}}
               {{#if this.devoured}}
                 <li>
-                  <p>
-                    {{this.burger_name}}
-                  </p>
+	  		          <p class="is-devoured">{{this.id}}. {{this.burger_name}}</p>
                 </li>
-                <form action="burgers/{{this.id}}" method="PUT">
-                 <input type="hidden" name="devoured" value="false">
               {{/if}}
             {{/each}}
           </ul>
@@ -42,9 +37,9 @@
       </div>
   <div class="row">
     <div class="col-md-2"></div>
-      <div class="col-md-4" id="update">
+      <div class="col-md-4 new-burger" id="update">
         <br><br><br>
-          <form class="create-update-form" action="burgers/create" method="POST">
+          <form class="create-update-form" action="/create" method="POST">
             <h2 class="add-title">Add a Burger</h2>
             <div class="form-group">
               <label for="newBurger">Burger Name:</label>

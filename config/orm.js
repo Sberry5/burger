@@ -1,11 +1,10 @@
 // Required connection
 var connection = require("../config/connection.js");
 
-
 // Object Relational Mappers (ORM) for sql commands
 var orm = {
-  all: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
+  all: function(table, cb) {
+    var queryString = "SELECT * FROM " + table + ";";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -14,40 +13,23 @@ var orm = {
     });
   },
 
-  create: function(table, column, userInput, cb) {
-   var queryString = "INSERT INTO " + table;
-
-    queryString += " (";
-    queryString += cols.toString();
-    queryString += ") ";
-    queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
-    queryString += ") ";
-
-    //console.log(queryString);
-
-    connection.query(queryString, vals, function(err, result) {
+  create: function(table, value, cb) {
+    connection.query("INSERT INTO " + table + " (burger_name) VALUES (?)", value, function(err, result) {
       if (err) {
-        throw err;
+          throw err;
       }
       cb(result);
-    });
-  },
+  });
+},
 
-  update: function(table, objColVals, condition, cb) {
-    var queryString = 'UPDATE ' + table;
-    
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
-    queryString += " WHERE ";
-    queryString += condition;
-
-    //console.log(queryString);
-
-    connection.query(queryString, function(err, result){
+  update: function(table, id, cb) {
+    connection.query("UPDATE " + table + " SET devoured = 1 WHERE id = ?", [id], function(err, result) {
+      if (err) {
+          throw err;
+      }
       cb(result);
-    });
-  }
+  });
+}
 };
 
 // Export the orm for other files
