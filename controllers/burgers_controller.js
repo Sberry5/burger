@@ -14,15 +14,15 @@ router.get("/", function(req, res) {
 
 // Route to insert user input into DB
 router.post('/create', function(req,res) {
-	burger.create(["burger_name", "devoured"], 
-	[req.body.burger_name, 0], function() {
+  console.log(req);
+	burger.create([req.body.burger_name, "devoured"], function() {
     res.redirect('/');
   });
 });
 
 
 // Route to update status of DB object 
-router.put('/:id', function(req,res) {
+router.put('/burgers/:id', function(req,res) {
 	burger.update(req.body.id, function() {
     devoured: 1,
 		res.redirect("/");
